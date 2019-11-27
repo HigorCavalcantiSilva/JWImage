@@ -1,0 +1,42 @@
+unit Screen2;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, jpeg, StdCtrls;
+
+type
+  TForm3 = class(TForm)
+    Image1: TImage;
+    Image2: TImage;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+uses Image, Config;
+
+{$R *.dfm}
+
+procedure TForm3.FormCreate(Sender: TObject);
+begin
+try
+BorderStyle := bsNone;
+Top := 0; Left:= 0;
+Left := Screen.Monitors[0].Width;
+Width := Screen.Monitors[1].Width;
+Height := Screen.Monitors[1].Height;
+except
+ShowMessage('Tela Secundária não encontrada. Verifique se a configuração de exibição está em ESTENDER e reinicie o programa!');
+end;
+end;
+
+end.
